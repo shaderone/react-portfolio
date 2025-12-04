@@ -1,3 +1,5 @@
+import SkillsProjectSection from "./components/SkillsProjectSection";
+import FunFactsSection from "./components/FunFactsSection";
 import SpotifyHero from "./components/SpotifyHero";
 import LandingIntro from "./components/LandingIntro";
 import ScrollIndicator from "./components/ScrollIndicator";
@@ -14,10 +16,22 @@ export default function App() {
   ];
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center relative">
-      <SpotifyHero profileImg={Profile} audioSrc={Track} links={links} />
-      <LandingIntro />
-      <ScrollIndicator targetId="skills-section" />
+    <div className="bg-black text-white font-sans">
+      {/* Landing */}
+      <section className="min-h-screen flex flex-col items-center justify-center relative gap-12 px-6">
+        <SpotifyHero profileImg={Profile} audioSrc={Track} links={links} />
+        <LandingIntro />
+        <ScrollIndicator targetId="main-section" />
+      </section>
+
+      {/* Main Section: Skills + Project */}
+      <section id="main-section">
+        <SkillsProjectSection />
+      </section>
+
+      {/* Fun Facts + Books */}
+      <FunFactsSection />
+
     </div>
   );
 }
