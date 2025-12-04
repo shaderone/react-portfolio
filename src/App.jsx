@@ -1,8 +1,6 @@
+import LandingSection from "./components/LandingSection";
 import SkillsProjectSection from "./components/SkillsProjectSection";
 import FunFactsSection from "./components/FunFactsSection";
-import SpotifyHero from "./components/SpotifyHero";
-import LandingIntro from "./components/LandingIntro";
-import ScrollIndicator from "./components/ScrollIndicator";
 
 import Profile from "./assets/profile.jpg";
 import Track from "./assets/softcore.mp3";
@@ -17,21 +15,37 @@ export default function App() {
 
   return (
     <div className="bg-black text-white font-sans">
-      {/* Landing */}
-      <section className="min-h-screen flex flex-col items-center justify-center relative gap-12 px-6">
-        <SpotifyHero profileImg={Profile} audioSrc={Track} links={links} />
-        <LandingIntro />
-        <ScrollIndicator targetId="main-section" />
-      </section>
+      {/* ===== First Landing Page ===== */}
+      <LandingSection
+        id="landing-top"          // add this ID
+        scrollTarget="main-section"
+        profileImg={Profile}
+        audioSrc={Track}
+        links={links}
+        scrollDirection="down"
+        scrollPosition="bottom"
+        showIntro={true}
+      />
 
-      {/* Main Section: Skills + Project */}
+      {/* ===== Skills + Featured Project Section ===== */}
       <section id="main-section">
         <SkillsProjectSection />
       </section>
 
-      {/* Fun Facts + Books */}
+      {/* ===== Fun Facts + Books Section ===== */}
       <FunFactsSection />
 
+      {/* ===== Final Landing Page ===== */}
+      <LandingSection
+        id="landing-bottom"       // add this ID
+        scrollTarget="landing-top" // scrolls back to first landing
+        profileImg={Profile}
+        audioSrc={Track}
+        links={links}
+        scrollDirection="up"
+        scrollPosition="top"
+        showIntro={true}
+      />
     </div>
   );
 }
