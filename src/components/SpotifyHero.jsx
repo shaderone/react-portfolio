@@ -21,7 +21,7 @@ export default function SpotifyHero({ profileImg, audioSrc, links }) {
     }, []);
 
     return (
-        <div className="relative w-full max-w-3xl bg-gradient-to-tr from-gray-900 via-black to-gray-900 rounded-2xl p-6 flex items-center gap-5 border border-white/10 overflow-hidden">
+        <div className="relative w-full max-w-3xl bg-linear-to-tr from-gray-900 via-black to-gray-900 rounded-2xl p-6 flex items-center gap-5 border border-white/10 overflow-hidden">
             <audio ref={audioRef} src={audioSrc} />
 
             {playing && (

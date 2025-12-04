@@ -1,50 +1,60 @@
+import { useState, useRef, useEffect } from "react";
 import LandingSection from "./components/LandingSection";
-import SkillsProjectSection from "./components/SkillsProjectSection";
-import FunFactsSection from "./components/FunFactsSection";
-
-import Profile from "./assets/profile.jpg";
+import MainSection from "./components/MainSection";
 import Track from "./assets/softcore.mp3";
+import Profile from "./assets/profile.jpg";
 
 export default function App() {
-  const links = [
-    { label: "Resume", href: "https://shaderone.github.io/mern-training-rit/Day-1/resume/index.html", primary: true },
-    { label: "GitHub", href: "https://github.com/shaderone", primary: false },
-    { label: "LinkedIn", href: "https://linkedin.com/in/shaderone", primary: false },
-    { label: "Behance", href: "https://www.behance.net/shaderone", primary: false },
-  ];
+  const audioRef = useRef(null);
+  const [playing, setPlaying] = useState(false);
+  const [progress, setProgress] = useState(0);
+
+  const togglePlay = () => {
+    if (!audioRef.current) return;
+    if (playing) audioRef.current.pause();
+    else audioRef.current.play();
+    setPlaying(!playing);
+  };
+
+  useEffect(() => {
+    const audio = audioRef.current;
+    if (!audio) return;
+
+    const updateProgress = () =>
+      setProgress(audio.currentTime / audio.duration || 0);
+
+    audio.addEventListener("timeupdate", updateProgress);
+    return () => audio.removeEventListener("timeupdate", updateProgress);
+  }, []);
 
   return (
-    <div className="bg-black text-white font-sans">
-      {/* ===== First Landing Page ===== */}
+    <div className="bg-black text-white min-h-screen font-sans">
+      {/* SINGLE AUDIO ELEMENT */}
+      <audio ref={audioRef} src={Track} />
+
+      {/* FIRST LANDING SECTION */}
       <LandingSection
-        id="landing-top"          // add this ID
-        scrollTarget="main-section"
+        id="landing-top"
         profileImg={Profile}
-        audioSrc={Track}
-        links={links}
-        scrollDirection="down"
-        scrollPosition="bottom"
-        showIntro={true}
+        playing={playing}
+        togglePlay={togglePlay}
+        progress={progress}
+        scrollTarget="main-section"
+        scrollIndicatorPosition="bottom"
       />
 
-      {/* ===== Skills + Featured Project Section ===== */}
-      <section id="main-section">
-        <SkillsProjectSection />
-      </section>
+      {/* MAIN SECTION: Skills + Project + Fun Facts + Books */}
+      <MainSection id="main-section" />
 
-      {/* ===== Fun Facts + Books Section ===== */}
-      <FunFactsSection />
-
-      {/* ===== Final Landing Page ===== */}
+      {/* SECOND LANDING SECTION */}
       <LandingSection
-        id="landing-bottom"       // add this ID
-        scrollTarget="landing-top" // scrolls back to first landing
+        id="landing-bottom"
         profileImg={Profile}
-        audioSrc={Track}
-        links={links}
-        scrollDirection="up"
-        scrollPosition="top"
-        showIntro={true}
+        playing={playing}
+        togglePlay={togglePlay}
+        progress={progress}
+        scrollTarget="landing-top"
+        scrollIndicatorPosition="top"
       />
     </div>
   );
