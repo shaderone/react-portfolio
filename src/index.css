@@ -1,6 +1,53 @@
 @import "tailwindcss";
 
-/* * {
-    margin: 0;
-    padding: 0;
-} */
+@layer utilities {
+    .animate-ripple {
+        animation: ripple 1.5s infinite;
+    }
+
+    .animate-fade-slide {
+        animation: fadeSlideUp 1s ease forwards;
+    }
+
+    .animate-dot-bounce {
+        animation: dotBounce 1s infinite;
+    }
+
+    @keyframes ripple {
+
+        0%,
+        100% {
+            transform: scale(0.8);
+            opacity: 0.3;
+        }
+
+        50% {
+            transform: scale(1.2);
+            opacity: 0.6;
+        }
+    }
+
+    @keyframes fadeSlideUp {
+        0% {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes dotBounce {
+
+        0%,
+        100% {
+            transform: translateY(0);
+        }
+
+        50% {
+            transform: translateY(12px);
+        }
+    }
+}
