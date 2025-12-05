@@ -1,4 +1,4 @@
-import ProjectImg from "../assets/mavericks.webp";
+import ProjectImg from "../assets/graph.jpg";
 import Alchemist from "../assets/alchemist.jpg";
 import PsychologyOfMoney from "../assets/pof.jpg";
 import PridePrejudice from "../assets/pride.webp";
@@ -8,7 +8,7 @@ export default function MainSection({ id }) {
         <section id={id} className="min-h-screen flex flex-col justify-center items-center gap-5 px-6 py-12">
             {/* Skills + Featured Project */}
             <div className="flex flex-col md:flex-row w-full max-w-6xl gap-10">
-                {/* Skills - 1/4 width */}
+
                 <div className="md:w-1/4 flex flex-col gap-4">
                     <h2 className="text-xl font-bold text-green-500 mb-4">Skills</h2>
                     <div className="flex flex-col gap-3">
@@ -20,7 +20,7 @@ export default function MainSection({ id }) {
                     </div>
                 </div>
 
-                {/* Featured Project - 3/4 width */}
+
                 <div className="md:w-3/4 flex flex-col gap-4">
                     <h2 className="text-xl font-bold text-green-500 mb-4">Featured Project</h2>
                     <div className="group relative overflow-hidden rounded-2xl border border-gray-700">

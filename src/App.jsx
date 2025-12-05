@@ -29,10 +29,10 @@ export default function App() {
 
   return (
     <div className="bg-black text-white min-h-screen font-sans">
-      {/* SINGLE AUDIO ELEMENT */}
+
       <audio ref={audioRef} src={Track} />
 
-      {/* FIRST LANDING SECTION */}
+
       <LandingSection
         id="landing-top"
         profileImg={Profile}
@@ -43,10 +43,10 @@ export default function App() {
         scrollIndicatorPosition="bottom"
       />
 
-      {/* MAIN SECTION: Skills + Project + Fun Facts + Books */}
+
       <MainSection id="main-section" />
 
-      {/* SECOND LANDING SECTION */}
+
       <LandingSection
         id="landing-bottom"
         profileImg={Profile}

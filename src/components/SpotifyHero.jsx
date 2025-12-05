@@ -1,4 +1,6 @@
 import { useRef, useState, useEffect } from "react";
+import { LuPlay, LuPause } from "react-icons/lu";
+
 
 export default function SpotifyHero({ profileImg, audioSrc, links }) {
     const audioRef = useRef(null);
@@ -70,7 +72,7 @@ export default function SpotifyHero({ profileImg, audioSrc, links }) {
                 onClick={togglePlay}
                 className="w-12 h-12 bg-green-500 rounded-full flex items-center justify-center text-black font-bold text-lg"
             >
-                {playing ? "❚❚" : "▶"}
+                {playing ? <LuPause /> : <LuPlay />}
             </button>
         </div>
     );
