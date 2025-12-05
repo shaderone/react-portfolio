@@ -18,16 +18,16 @@ html {
     }
 
     @keyframes ripple {
-
-        0%,
-        100% {
-            transform: scale(0.8);
-            opacity: 0.3;
+        0% {
+            opacity: 0.15;
         }
 
         50% {
-            transform: scale(1.2);
-            opacity: 0.6;
+            opacity: 0.35;
+        }
+
+        100% {
+            opacity: 0.15;
         }
     }
 
